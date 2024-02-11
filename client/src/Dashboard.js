@@ -68,7 +68,7 @@ const Dashboard = () => {
       const settings = { method: "get" };
       try {
         const dataFetched = await fetch(
-          "http://localhost:4000/admin/api/movie-list",
+          "https://movieratingapp.onrender.com/admin/api/movie-list",
           settings
         );
         setData(await dataFetched.json());

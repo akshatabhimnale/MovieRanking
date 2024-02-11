@@ -16,7 +16,7 @@ export default function Login() {
   });
   const handleSubmit = async (event) => {
     try {
-      const url = "http://localhost:4000/admin/api/login";
+      const url = "https://movieratingapp.onrender.com/admin/api/login";
       const response = await fetch(url, {
         method: "post",
         headers: {

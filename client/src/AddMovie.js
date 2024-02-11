@@ -25,7 +25,7 @@ export default function AddMovie() {
     console.log(formDataObj);
     try {
       const response = await fetch(
-        "http://localhost:4000/admin/api/add-movie",
+        "https://movieratingapp.onrender.com/admin/api/add-movie",
         {
           method: "post",
 

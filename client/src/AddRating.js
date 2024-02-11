@@ -24,7 +24,8 @@ const AddRating = (props) => {
     event.preventDefault();
 
     try {
-      const url = "http://localhost:4000/user/api/rating/" + props.movieId;
+      const url =
+        "https://movieratingapp.onrender.com/user/api/rating/" + props.movieId;
 
       const response = await fetch(url, {
         method: "post",
