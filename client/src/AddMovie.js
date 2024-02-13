@@ -5,6 +5,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { FormGroup, Stack, Typography } from "@mui/material";
+import BASE_URL from "./Variable";
 
 export default function AddMovie() {
   const fileInputRef = useRef(null);
@@ -24,14 +25,11 @@ export default function AddMovie() {
     formDataObj.append("file", fileInputRef.current.files[0]);
     console.log(formDataObj);
     try {
-      const response = await fetch(
-        "https://movieratingapp.onrender.com/admin/api/add-movie",
-        {
-          method: "post",
+      const response = await fetch(BASE_URL + "admin/api/add-movie", {
+        method: "post",
 
-          body: formDataObj,
-        }
-      );
+        body: formDataObj,
+      });
 
       if (response.ok) {
         console.log("Form submitted successfully");

@@ -5,18 +5,8 @@ import {
   gridFilteredSortedRowIdsSelector,
   selectedGridRowsSelector,
 } from "@mui/x-data-grid";
-import {
-  Box,
-  Button,
-  FormGroup,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
+import { Box, Paper } from "@mui/material";
+import BASE_URL from "./Variable";
 import AddMovie from "./AddMovie";
 
 const getSelectedRowsToExport = ({ apiRef }) => {
@@ -68,7 +58,7 @@ const Dashboard = () => {
       const settings = { method: "get" };
       try {
         const dataFetched = await fetch(
-          "https://movieratingapp.onrender.com/admin/api/movie-list",
+          BASE_URL + "admin/api/movie-list",
           settings
         );
         setData(await dataFetched.json());

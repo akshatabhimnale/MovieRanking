@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import BASE_URL from "./Variable";
 
 const AddRating = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -24,8 +25,7 @@ const AddRating = (props) => {
     event.preventDefault();
 
     try {
-      const url =
-        "https://movieratingapp.onrender.com/user/api/rating/" + props.movieId;
+      const url = BASE_URL + "user/api/rating/" + props.movieId;
 
       const response = await fetch(url, {
         method: "post",

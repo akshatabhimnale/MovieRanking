@@ -4,19 +4,8 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 //import StarIcon from "@mui/icons-material/Star";
-import {
-  Box,
-  Button,
-  CardActionArea,
-  CardActions,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  FormGroup,
-  Rating,
-  Stack,
-  TextField,
-} from "@mui/material";
+import { Box, CardActionArea, CardActions, Rating } from "@mui/material";
+import BASE_URL from "./Variable";
 import { Container, Grid, Typography } from "@mui/material";
 import AddRating from "./AddRating";
 
@@ -28,7 +17,7 @@ const Movies = () => {
       const settings = { method: "get" };
       try {
         const dataFetched = await fetch(
-          "https://movieratingapp.onrender.com/admin/api/movie-list",
+          BASE_URL + "admin/api/movie-list",
           settings
         );
         setData(await dataFetched.json());

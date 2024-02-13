@@ -7,6 +7,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BASE_URL from "./Variable";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function Login() {
   });
   const handleSubmit = async (event) => {
     try {
-      const url = "https://movieratingapp.onrender.com/admin/api/login";
+      const url = BASE_URL + "admin/api/login";
       const response = await fetch(url, {
         method: "post",
         headers: {
