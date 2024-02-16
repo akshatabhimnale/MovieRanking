@@ -1,12 +1,12 @@
 // login
 //const express = require("express");
-const Mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const validator = require("validator");
+
 const { connectToMongoDB, client } = require("../config/connection");
 const { ObjectId } = require("mongodb");
 const multer = require("multer");
 
+const fs = require("fs");
+const path = require("path");
 const getLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -36,23 +36,29 @@ const getLogin = async (req, res) => {
 };
 
 const addMovie = async (req, res) => {
-  console.log("in addmovie function");
-
+  console.log(req.files);
   try {
     const { movie_name, movie_detail } = req.body;
-    console.log(movie_name);
-
     const cl = await client.connect();
     const db = cl.db("MERNSTACK");
     const collection = db.collection("Movies");
 
-    // if (movie_name != "" || movie_details != "") {
-    //   res.status(400).json({ error: "All details are mandatory" });
-    // }
+    let fileName =
+      Math.floor(Math.random() * 10000) +
+      "." +
+      req.files.file.name.split(".").pop();
+
+    fs.writeFile(
+      path.join(__dirname, "../public/") + fileName,
+      req.files.file.data,
+      function (err) {
+        if (err) throw err;
+      }
+    );
     const newMovie = {
       movie_name: movie_name,
       movie_details: movie_detail,
-      movie_img: "",
+      movie_img: fileName,
       movie_rating: "0",
     };
     const addedmovie = await collection.insertOne(newMovie);

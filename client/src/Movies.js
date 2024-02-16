@@ -3,7 +3,6 @@ import "./Movies.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-//import StarIcon from "@mui/icons-material/Star";
 import { Box, CardActionArea, CardActions, Rating } from "@mui/material";
 import BASE_URL from "./Variable";
 import { Container, Grid, Typography } from "@mui/material";
@@ -16,6 +15,7 @@ const Movies = () => {
     async function movieList() {
       const settings = { method: "get" };
       try {
+        console.log(BASE_URL);
         const dataFetched = await fetch(
           BASE_URL + "admin/api/movie-list",
           settings
@@ -45,7 +45,9 @@ const Movies = () => {
                 className="card"
                 sx={{ maxWidth: 700, height: 300, borderRadius: 5 }}
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.57), rgba(10, 6, 13, 0.49)), url(${result.movie_img})`,
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.57), rgba(10, 6, 13, 0.49)), url(${
+                    BASE_URL + "public/" + result.movie_img
+                  })`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
                   padding: "1px",
@@ -57,7 +59,7 @@ const Movies = () => {
                   <CardMedia
                     component="img"
                     height="300"
-                    image={result.movie_img}
+                    image={BASE_URL + "public/" + result.movie_img}
                     alt="green iguana"
                     style={{ borderRadius: "10px" }}
                   />

@@ -8,7 +8,6 @@ import {
 import { Box, Paper } from "@mui/material";
 import BASE_URL from "./Variable";
 import AddMovie from "./AddMovie";
-
 const getSelectedRowsToExport = ({ apiRef }) => {
   const selectedRowIds = selectedGridRowsSelector(apiRef);
   if (selectedRowIds.size > 0) {
@@ -30,7 +29,7 @@ const columns = [
       return (
         <div>
           <img
-            src={params.row.movie_img}
+            src={BASE_URL + "public/" + params.row.movie_img}
             style={{ width: 150, borderRadius: 20 }}
             alt="Image not found"
           />

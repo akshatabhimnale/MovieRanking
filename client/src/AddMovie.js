@@ -25,9 +25,9 @@ export default function AddMovie() {
     formDataObj.append("file", fileInputRef.current.files[0]);
     console.log(formDataObj);
     try {
-      const response = await fetch(BASE_URL + "admin/api/add-movie", {
+      const url = BASE_URL + "admin/api/add-movie";
+      const response = await fetch(url, {
         method: "post",
-
         body: formDataObj,
       });
 
